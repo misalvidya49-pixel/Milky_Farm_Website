@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login | MILKY FARM</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #eef8f2;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* ================= MAIN CARD ================= */
+
+        .login-wrapper {
+            width: 900px;
+            max-width: 94%;
+            min-height: 560px;
+
+            background: white;
+
+            border-radius: 22px;
+            overflow: hidden;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+        }
+
+
+        /* ================= LEFT GREEN SIDE ================= */
+
+        .left-panel {
+            background: #123c2a;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 40px;
+        }
+
+
+        .brand-content {
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        /* ================= LOGO CIRCLE ================= */
+
+        .logo-circle {
+
+            width: 190px;
+            height: 190px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            background: #123c2a;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        .logo-circle img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* ================= BRAND NAME ================= */
+
+        .brand-content h1 {
+
+            margin: 0;
+
+            color: white;
+
+            font-size: 32px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .brand-content h3 {
+
+            margin: 10px 0 25px;
+
+            color: #bce8cb;
+
+            font-size: 14px;
+
+            font-weight: normal;
+
+            letter-spacing: 3px;
+        }
+
+
+        .brand-content p {
+
+            margin: 0;
+
+            color: #e0f1e6;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ================= RIGHT SIDE ================= */
+
+        .right-panel {
+
+            padding: 55px 50px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .login-icon {
+
+            width: 58px;
+            height: 58px;
+
+            background: #e7f5ec;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 27px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .right-panel h2 {
+
+            margin: 0;
+
+            color: #123c2a;
+
+            font-size: 30px;
+        }
+
+
+        .subtitle {
+
+            margin: 8px 0 30px;
+
+            color: #7b8580;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #374151;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: 1px solid #d6e1da;
+
+            border-radius: 9px;
+
+            background: #fbfdfc;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #198754;
+
+            box-shadow: 0 0 0 3px rgba(25,135,84,0.10);
+
+            background: white;
+        }
+
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .login-btn {
+
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 4px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: #198754;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .login-btn:hover {
+
+            background: #146c43;
+        }
+
+
+        /* ================= SECURITY ================= */
+
+        .security-note {
+
+            margin-top: 25px;
+
+            padding: 12px;
+
+            background: #f2faf5;
+
+            border-radius: 9px;
+
+            text-align: center;
+
+            color: #5f6f65;
+
+            font-size: 11px;
+        }
+
+
+        /* ================= BACK HOME ================= */
+
+        .back-home {
+
+            text-align: center;
+
+            margin-top: 23px;
+        }
+
+
+        .back-home a {
+
+            color: #198754;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .back-home a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .login-wrapper {
+
+                grid-template-columns: 1fr;
+
+                max-width: 500px;
+            }
+
+            .left-panel {
+
+                padding: 35px 20px;
+            }
+
+            .logo-circle {
+
+                width: 150px;
+                height: 150px;
+            }
+
+            .brand-content h1 {
+
+                font-size: 26px;
+            }
+
+            .right-panel {
+
+                padding: 40px 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="login-wrapper">
+
+
+    <!-- ================= LEFT GREEN PANEL ================= -->
+
+    <div class="left-panel">
+
+        <div class="brand-content">
+
+
+            <!-- LOGO -->
+
+            <div class="logo-circle">
+
+                <img
+                    src="{{ url_for('static', filename='images/logo.png') }}"
+                    alt="MILKY FARM Logo"
+                >
+
+            </div>
+
+
+            <!-- BRAND -->
+
+            <h1>
+                MILKY FARM
+            </h1>
+
+
+            <h3>
+                FARM TO CUSTOMER
+            </h3>
+
+
+            <p>
+
+                Welcome to the MILKY FARM<br>
+
+                Administration Portal.
+
+                <br><br>
+
+                Manage orders, customers<br>
+
+                and customer messages easily.
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RIGHT LOGIN PANEL ================= -->
+
+    <div class="right-panel">
+
+
+        <div class="login-icon">
+            🔐
+        </div>
+
+
+        <h2>
+            Admin Login
+        </h2>
+
+
+        <p class="subtitle">
+            Login to access your administration dashboard.
+        </p>
+
+
+        <form
+            action="/admin-login"
+            method="POST"
+        >
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter admin email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter admin password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+
+                Login to Admin Panel
+
+            </button>
+
+
+        </form>
+
+
+        <div class="security-note">
+
+            🔒 Secure Administrator Access
+
+        </div>
+
+
+        <div class="back-home">
+
+            <a href="/">
+
+                ← Back to Home
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

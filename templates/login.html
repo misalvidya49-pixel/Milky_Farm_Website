@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | MILKY FARM</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            min-height: 100vh;
+
+            background: #eef8f1;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+        }
+
+
+        /* =========================
+           MAIN LOGIN CONTAINER
+        ========================= */
+
+        .login-container {
+
+            width: 950px;
+
+            max-width: 100%;
+
+            min-height: 570px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 15px 45px rgba(0, 80, 30, 0.15);
+
+            display: flex;
+        }
+
+
+        /* =========================
+           LEFT SIDE
+        ========================= */
+
+        .login-left {
+
+            width: 50%;
+
+            min-height: 570px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: white;
+
+            padding: 35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            background: #178a47;
+        }
+
+
+        /* =========================
+           FARM BACKGROUND IMAGE
+        ========================= */
+
+        .login-left::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+                url("{{ url_for('static', filename='images/milky_farm_login_background_clean.png') }}");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            z-index: 0;
+        }
+
+
+        /* =========================
+           GREEN TRANSPARENT OVERLAY
+        ========================= */
+
+        .login-left::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(23, 138, 71, 0.28),
+                    rgba(23, 138, 71, 0.28)
+                );
+
+            z-index: 1;
+        }
+
+
+        /* =========================
+           LEFT CONTENT
+        ========================= */
+
+        .login-left > * {
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =========================
+           LOGO
+        ========================= */
+
+        .farm-logo {
+
+            width: 145px;
+
+            height: 145px;
+
+            object-fit: contain;
+
+            border-radius: 50%;
+
+            background: white;
+
+            padding: 5px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* =========================
+           MILKY FARM TITLE
+        ========================= */
+
+        .login-left h1 {
+
+            font-size: 38px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 8px;
+
+            text-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.45);
+        }
+
+
+        /* =========================
+           LINE
+        ========================= */
+
+        .farm-line {
+
+            width: 65px;
+
+            height: 3px;
+
+            background: white;
+
+            border-radius: 10px;
+
+            margin: 5px 0 15px;
+        }
+
+
+        /* =========================
+           FARM TO CUSTOMER
+        ========================= */
+
+        .login-left h2 {
+
+            font-size: 20px;
+
+            font-weight: normal;
+
+            margin-bottom: 18px;
+
+            text-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.45);
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .login-left p {
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            max-width: 340px;
+
+            text-shadow:
+                0 2px 5px rgba(0, 0, 0, 0.45);
+        }
+
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .login-right {
+
+            width: 50%;
+
+            padding: 55px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            background: white;
+        }
+
+
+        /* =========================
+           WELCOME TITLE
+        ========================= */
+
+        .login-right h2 {
+
+            color: #126b32;
+
+            font-size: 31px;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           SUBTITLE
+        ========================= */
+
+        .login-subtitle {
+
+            color: #777;
+
+            font-size: 14px;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =========================
+           INPUT GROUP
+        ========================= */
+
+        .input-group {
+
+            margin-bottom: 21px;
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            color: #333;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        .input-group input {
+
+            width: 100%;
+
+            height: 50px;
+
+            padding: 0 15px;
+
+            border:
+                1px solid #d5e4d9;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            background: #fbfdfb;
+
+            color: #333;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+
+        .input-group input:focus {
+
+            border-color: #159447;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(21, 148, 71, 0.08);
+
+            background: white;
+        }
+
+
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .login-btn {
+
+            width: 100%;
+
+            height: 50px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background: #11863f;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+            margin-top: 5px;
+        }
+
+
+        .login-btn:hover {
+
+            background: #0b6d31;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================
+           REGISTER
+        ========================= */
+
+        .register-text {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        .register-text a {
+
+            color: #11863f;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        .register-text a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           HOME LINK
+        ========================= */
+
+        .home-link {
+
+            text-align: center;
+
+            margin-top: 17px;
+        }
+
+
+        .home-link a {
+
+            color: #666;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+
+        .home-link a:hover {
+
+            color: #11863f;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            body {
+
+                padding: 12px;
+            }
+
+
+            .login-container {
+
+                flex-direction: column;
+
+                min-height: auto;
+            }
+
+
+            .login-left,
+            .login-right {
+
+                width: 100%;
+            }
+
+
+            .login-left {
+
+                min-height: 430px;
+
+                padding: 30px 20px;
+            }
+
+
+            .farm-logo {
+
+                width: 125px;
+
+                height: 125px;
+            }
+
+
+            .login-left h1 {
+
+                font-size: 31px;
+            }
+
+
+            .login-left h2 {
+
+                font-size: 18px;
+            }
+
+
+            .login-right {
+
+                padding: 35px 25px;
+            }
+
+
+            .login-right h2 {
+
+                font-size: 27px;
+            }
+
+        }
+
+
+        /* =========================
+           SMALL MOBILE
+        ========================= */
+
+        @media (max-width: 450px) {
+
+            .login-left {
+
+                min-height: 390px;
+            }
+
+
+            .farm-logo {
+
+                width: 110px;
+
+                height: 110px;
+            }
+
+
+            .login-left h1 {
+
+                font-size: 27px;
+            }
+
+
+            .login-left h2 {
+
+                font-size: 17px;
+            }
+
+
+            .login-left p {
+
+                font-size: 13px;
+            }
+
+
+            .login-right {
+
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MAIN LOGIN CONTAINER
+    ========================= -->
+
+    <div class="login-container">
+
+
+        <!-- =========================
+             LEFT SIDE
+        ========================= -->
+
+        <div class="login-left">
+
+
+            <!-- ORIGINAL MILKY FARM LOGO -->
+
+            <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                class="farm-logo"
+                alt="MILKY FARM Logo"
+            >
+
+
+            <!-- TITLE -->
+
+            <h1>
+                MILKY FARM
+            </h1>
+
+
+            <!-- LINE -->
+
+            <div class="farm-line"></div>
+
+
+            <!-- TAGLINE -->
+
+            <h2>
+                Farm to Customer
+            </h2>
+
+
+            <!-- DESCRIPTION -->
+
+            <p>
+                Fresh dairy products delivered with
+                quality, freshness and care.
+            </p>
+
+
+        </div>
+
+
+        <!-- =========================
+             RIGHT SIDE
+        ========================= -->
+
+        <div class="login-right">
+
+
+            <!-- WELCOME -->
+
+            <h2>
+                Welcome Back 👋
+            </h2>
+
+
+            <!-- SUBTITLE -->
+
+            <p class="login-subtitle">
+                Login to your MILKY FARM account
+            </p>
+
+
+            <!-- LOGIN FORM -->
+
+            <form
+                method="POST"
+                action="/login"
+            >
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Login
+                </button>
+
+
+            </form>
+
+
+            <!-- REGISTER -->
+
+            <div class="register-text">
+
+                Don't have an account?
+
+                <a href="/register">
+                    Create Account
+                </a>
+
+            </div>
+
+
+            <!-- HOME -->
+
+            <div class="home-link">
+
+                <a href="/">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

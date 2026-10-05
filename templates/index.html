@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="MILKY FARM - Fresh and quality dairy products directly from farm to customer.">
+
+    <title>MILKY FARM | Farm To Customer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="main-header">
+
+    <div class="header-container">
+
+
+        <a href="/" class="brand">
+
+            <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                alt="MILKY FARM Logo"
+            >
+
+            <div class="brand-text">
+
+                <h1>MILKY FARM</h1>
+
+                <span>
+                    FARM TO CUSTOMER
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a href="/" class="active">
+                Home
+            </a>
+
+            <a href="#products">
+                Products
+            </a>
+
+            <a href="#about">
+                About Us
+            </a>
+
+            <a href="#location">
+                Location
+            </a>
+
+            <a href="/contact">
+                Contact
+            </a>
+
+            <a href="/login" class="nav-login">
+                Login
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="hero-section">
+
+    <div class="hero-content">
+
+
+        <div class="hero-text">
+
+            <span class="hero-badge">
+                🥛 FRESH • PURE • TRUSTED
+            </span>
+
+
+            <h2>
+                Fresh Dairy Products
+                <br>
+                <span>From Our Farm To You</span>
+            </h2>
+
+
+            <p>
+                Enjoy fresh and quality dairy products
+                delivered from farm to customer.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#products"
+                    class="primary-btn"
+                >
+                    Explore Products
+                </a>
+
+
+                <a
+                    href="#about"
+                    class="secondary-btn"
+                >
+                    Discover MILKY FARM
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-icon">
+                🐄
+            </div>
+
+            <h3>
+                FARM FRESH
+            </h3>
+
+            <p>
+                Quality dairy products
+                you can trust.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK FEATURES
+===================================================== -->
+
+<section class="features-section">
+
+    <div class="features-container">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🥛
+            </div>
+
+            <div>
+
+                <h3>
+                    Fresh Products
+                </h3>
+
+                <p>
+                    Fresh dairy products
+                    for your family.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🌱
+            </div>
+
+            <div>
+
+                <h3>
+                    Quality First
+                </h3>
+
+                <p>
+                    We focus on quality
+                    and freshness.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <div>
+
+                <h3>
+                    Farm To Customer
+                </h3>
+
+                <p>
+                    Direct connection
+                    from farm to customer.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📍
+            </div>
+
+            <div>
+
+                <h3>
+                    Visit Our Farm
+                </h3>
+
+                <p>
+                    Find our exact
+                    location on the map.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="search-section">
+
+    <div class="section-heading">
+
+        <span>
+            FIND YOUR FAVORITE
+        </span>
+
+        <h2>
+            Search Products 🔎
+        </h2>
+
+        <p>
+            Search our fresh dairy products quickly.
+        </p>
+
+    </div>
+
+
+    <div class="search-box">
+
+        <span>
+            🔎
+        </span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search milk, ghee, paneer, curd..."
+        >
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+    id="products"
+    class="products-section"
+>
+
+
+    <div class="section-heading">
+
+        <span>
+            OUR PRODUCTS
+        </span>
+
+        <h2>
+            Fresh From MILKY FARM 🥛
+        </h2>
+
+        <p>
+            Choose from our range of fresh dairy products.
+        </p>
+
+    </div>
+
+
+
+    <div class="products-container">
+
+
+        <!-- Buffalo Milk -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🥛
+            </div>
+
+            <h3>
+                Buffalo Milk
+            </h3>
+
+            <p class="product-price">
+                ₹78 <small>/ Ltr</small>
+            </p>
+
+            <a
+                href="/order?product=Buffalo%20Milk&price=78"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Cow Milk -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🥛
+            </div>
+
+            <h3>
+                Cow Milk
+            </h3>
+
+            <p class="product-price">
+                ₹60 <small>/ Ltr</small>
+            </p>
+
+            <a
+                href="/order?product=Cow%20Milk&price=60"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Cow Ghee -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🫙
+            </div>
+
+            <h3>
+                Cow Ghee
+            </h3>
+
+            <p class="product-price">
+                ₹750 <small>/ Kg</small>
+            </p>
+
+            <a
+                href="/order?product=Cow%20Ghee&price=750"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Buffalo Ghee -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🫙
+            </div>
+
+            <h3>
+                Buffalo Ghee
+            </h3>
+
+            <p class="product-price">
+                ₹800 <small>/ Kg</small>
+            </p>
+
+            <a
+                href="/order?product=Buffalo%20Ghee&price=800"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Mava -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🍨
+            </div>
+
+            <h3>
+                Mava
+            </h3>
+
+            <p class="product-price">
+                ₹360 <small>/ Kg</small>
+            </p>
+
+            <a
+                href="/order?product=Mava&price=360"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Curd -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🥣
+            </div>
+
+            <h3>
+                Curd
+            </h3>
+
+            <p class="product-price">
+                ₹120 <small>/ Kg</small>
+            </p>
+
+            <a
+                href="/order?product=Curd&price=120"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Paneer -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🧀
+            </div>
+
+            <h3>
+                Paneer
+            </h3>
+
+            <p class="product-price">
+                ₹360 <small>/ Kg</small>
+            </p>
+
+            <a
+                href="/order?product=Paneer&price=360"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Lassi -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🥤
+            </div>
+
+            <h3>
+                Lassi
+            </h3>
+
+            <p class="product-price">
+                ₹30 <small>/ Glass</small>
+            </p>
+
+            <a
+                href="/order?product=Lassi&price=30"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Taak -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🥛
+            </div>
+
+            <h3>
+                Taak
+            </h3>
+
+            <p class="product-price">
+                ₹50 <small>/ Ltr</small>
+            </p>
+
+            <a
+                href="/order?product=Taak&price=50"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Green Peas -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🫛
+            </div>
+
+            <h3>
+                Green Peas
+            </h3>
+
+            <p class="product-price">
+                ₹110 <small>/ Kg</small>
+            </p>
+
+            <a
+                href="/order?product=Green%20Peas&price=110"
+                class="primary-btn"
+            >
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Ice Cream -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🍦
+            </div>
+
+            <h3>
+                Ice Cream
+            </h3>
+
+            <p>
+                Arun & Mother Dairy
+            </p>
+
+            <span class="store-price">
+                Available in store
+            </span>
+
+        </div>
+
+
+
+        <!-- Butter -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🧈
+            </div>
+
+            <h3>
+                Butter
+            </h3>
+
+            <span class="store-price">
+                Price available in store
+            </span>
+
+        </div>
+
+
+
+        <!-- Cheese -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🧀
+            </div>
+
+            <h3>
+                Cheese
+            </h3>
+
+            <span class="store-price">
+                Price available in store
+            </span>
+
+        </div>
+
+
+
+        <!-- Shrikhand -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🍨
+            </div>
+
+            <h3>
+                Shrikhand
+            </h3>
+
+            <span class="store-price">
+                Price available in store
+            </span>
+
+        </div>
+
+
+
+        <!-- Amrakhand -->
+
+        <div class="product-card">
+
+            <div class="product-icon">
+                🍨
+            </div>
+
+            <h3>
+                Amrakhand
+            </h3>
+
+            <span class="store-price">
+                Price available in store
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+    id="about"
+    class="about-section"
+>
+
+
+    <div class="about-container">
+
+
+        <div class="about-content">
+
+            <span class="section-label">
+                ABOUT US
+            </span>
+
+            <h2>
+                Bringing Freshness
+                From Farm To Customer
+            </h2>
+
+
+            <p>
+                MILKY FARM provides fresh and quality
+                dairy products directly from farm to
+                customer.
+            </p>
+
+
+            <p>
+                Our goal is to provide pure, fresh and
+                trustworthy dairy products for every
+                family.
+            </p>
+
+
+            <div class="about-points">
+
+                <div>
+                    ✓ Fresh Dairy Products
+                </div>
+
+                <div>
+                    ✓ Quality Focused
+                </div>
+
+                <div>
+                    ✓ Customer Friendly Service
+                </div>
+
+                <div>
+                    ✓ Direct Farm Connection
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-card">
+
+            <div class="about-card-icon">
+                🐄
+            </div>
+
+            <h3>
+                FARM TO CUSTOMER
+            </h3>
+
+            <p>
+                Freshness you can trust,
+                quality you can enjoy.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section
+    id="location"
+    class="location-section"
+>
+
+
+    <div class="section-heading">
+
+        <span>
+            FIND US
+        </span>
+
+        <h2>
+            Visit MILKY FARM 📍
+        </h2>
+
+        <p>
+            Find our dairy at the exact location below.
+        </p>
+
+    </div>
+
+
+    <div class="location-container">
+
+
+        <div class="location-info">
+
+            <h3>
+                MILKY FARM DAIRY
+            </h3>
+
+
+            <p>
+                📍 Milky farm dairy, Vijay Nagar Rd,
+                opp. SMRUTI GARDEN SOCIETY,
+                Kalewadi, Pimpri-Chinchwad,
+                Maharashtra 411017
+            </p>
+
+
+            <a
+                href="https://maps.app.goo.gl/7bqn5AHVKPJCyheJ7?g_st=aw"
+                target="_blank"
+                class="primary-btn"
+            >
+                Open Google Maps 📍
+            </a>
+
+        </div>
+
+
+        <div class="map-container">
+
+            <iframe
+                src="https://www.google.com/maps?q=Milky%20farm%20dairy,%20Vijay%20Nagar%20Rd,%20opp.%20SMRUTI%20GARDEN,%20Kalewadi,%20Pimpri-Chinchwad,%20Maharashtra%20411017&output=embed"
+                width="100%"
+                height="420"
+                style="border:0;"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT CTA
+===================================================== -->
+
+<section class="contact-cta">
+
+    <div>
+
+        <span>
+            HAVE QUESTIONS?
+        </span>
+
+        <h2>
+            We'd Love To Hear From You
+        </h2>
+
+        <p>
+            Contact MILKY FARM for more information
+            about our products and services.
+        </p>
+
+    </div>
+
+
+    <a
+        href="/contact"
+        class="primary-btn"
+    >
+        Contact Us 📞
+    </a>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="main-footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-brand">
+
+            <h2>
+                MILKY FARM
+            </h2>
+
+            <p>
+                FARM TO CUSTOMER
+            </p>
+
+            <span>
+                Fresh • Pure • Trusted
+            </span>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="#products">
+                Products
+            </a>
+
+            <a href="#about">
+                About Us
+            </a>
+
+            <a href="/contact">
+                Contact
+            </a>
+
+            <a href="/login">
+                Customer Login
+            </a>
+
+        </div>
+
+
+        <div class="footer-location">
+
+            <h3>
+                Our Location
+            </h3>
+
+            <p>
+                Kalewadi, Pimpri-Chinchwad,
+                Maharashtra - 411017
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 MILKY FARM | FARM TO CUSTOMER
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+
+</html>

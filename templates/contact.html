@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact - Milky Farm</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo-section">
+
+            <img src="{{ url_for('static', filename='images/logo.png') }}"
+                 alt="Milky Farm Logo">
+
+            <div>
+                <h1>MILKY FARM</h1>
+                <p>FARM TO CUSTOMER</p>
+            </div>
+
+        </div>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/#products">Products</a>
+            <a href="/#about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Have any questions or suggestions?
+            Send us a message.
+        </p>
+
+
+        <div class="contact-box">
+
+            <form method="POST" action="/contact">
+
+                <label>Name</label>
+
+                <input type="text"
+                       name="name"
+                       placeholder="Enter your name"
+                       required>
+
+
+                <label>Email</label>
+
+                <input type="email"
+                       name="email"
+                       placeholder="Enter your email"
+                       required>
+
+
+                <label>Mobile Number</label>
+
+                <input type="tel"
+                       name="mobile"
+                       placeholder="Enter your mobile number"
+                       required>
+
+
+                <label>Message</label>
+
+                <textarea name="message"
+                          rows="5"
+                          placeholder="Write your message..."
+                          required></textarea>
+
+
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 MILKY FARM | FARM TO CUSTOMER
+        </p>
+
+    </footer>
+
+</body>
+</html>

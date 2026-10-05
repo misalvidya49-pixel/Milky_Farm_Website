@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | MILKY FARM</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f8f5;
+            color: #26352b;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .dashboard-header {
+            background: white;
+            min-height: 82px;
+
+            padding: 12px 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow:
+                0 3px 18px rgba(0,0,0,0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .dashboard-logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .dashboard-logo img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+        }
+
+        .dashboard-logo h1 {
+            color: #188038;
+            font-size: 23px;
+            letter-spacing: 1px;
+        }
+
+        .dashboard-logo p {
+            color: #758178;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .dashboard-nav {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .dashboard-nav a {
+            text-decoration: none;
+            color: #344238;
+
+            padding: 9px 16px;
+
+            border-radius: 22px;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .dashboard-nav a:hover {
+            background: #edf7ef;
+            color: #188038;
+        }
+
+        .logout-btn {
+            background: #188038 !important;
+            color: white !important;
+        }
+
+        .logout-btn:hover {
+            background: #0f652b !important;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .dashboard-container {
+            max-width: 1150px;
+
+            margin: 40px auto;
+
+            padding: 0 22px;
+        }
+
+        /* =========================
+           WELCOME HERO
+        ========================= */
+
+        .welcome-box {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #188038,
+                    #0e682d
+                );
+
+            color: white;
+
+            padding: 38px 42px;
+
+            border-radius: 22px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 12px 35px rgba(24,128,56,0.18);
+        }
+
+        .welcome-box::after {
+            content: "🥛";
+
+            position: absolute;
+
+            right: 55px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 95px;
+
+            opacity: 0.13;
+        }
+
+        .welcome-box h2 {
+            font-size: 31px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-box p {
+            font-size: 14px;
+            margin-top: 7px;
+            opacity: 0.9;
+        }
+
+        .welcome-box b {
+            color: white;
+        }
+
+        /* =========================
+           QUICK CARDS
+        ========================= */
+
+        .quick-cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-bottom: 30px;
+        }
+
+        .quick-card {
+            background: white;
+
+            padding: 23px;
+
+            border-radius: 17px;
+
+            border: 1px solid #e0eae2;
+
+            box-shadow:
+                0 5px 18px rgba(0,0,0,0.04);
+
+            transition: 0.3s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.07);
+        }
+
+        .quick-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #edf8ef;
+
+            border-radius: 13px;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        .quick-card h3 {
+            color: #17351f;
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .quick-card p {
+            color: #748078;
+            font-size: 13px;
+        }
+
+        /* =========================
+           ORDERS SECTION
+        ========================= */
+
+        .orders-section {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            border: 1px solid #e1eae3;
+
+            box-shadow:
+                0 7px 25px rgba(0,0,0,0.05);
+        }
+
+        .orders-heading {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 22px;
+        }
+
+        .orders-heading h2 {
+            color: #17351f;
+
+            font-size: 24px;
+        }
+
+        .orders-heading span {
+            color: #188038;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            background: #edf8ef;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-container {
+            width: 100%;
+
+            overflow-x: auto;
+
+            border-radius: 12px;
+
+            border: 1px solid #e2e9e3;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 850px;
+        }
+
+        th {
+            background: #188038;
+
+            color: white;
+
+            padding: 14px 13px;
+
+            text-align: left;
+
+            font-size: 13px;
+        }
+
+        td {
+            padding: 14px 13px;
+
+            border-bottom:
+                1px solid #e8eee9;
+
+            font-size: 13px;
+
+            color: #46534a;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f7fbf7;
+        }
+
+        td:first-child {
+            color: #188038;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .pending,
+        .confirmed,
+        .delivered {
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #a56a00;
+            background: #fff4d6;
+        }
+
+        .confirmed {
+            color: #1769aa;
+            background: #e5f2ff;
+        }
+
+        .delivered {
+            color: #18763b;
+            background: #e3f6e8;
+        }
+
+        /* =========================
+           EMPTY ORDERS
+        ========================= */
+
+        .empty-message {
+            text-align: center;
+
+            padding: 45px 20px;
+
+            color: #777;
+        }
+
+        .empty-icon {
+            font-size: 50px;
+
+            margin-bottom: 12px;
+        }
+
+        .empty-message p {
+            margin-bottom: 15px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+
+            background: #188038;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px 23px;
+
+            border-radius: 25px;
+
+            font-weight: bold;
+
+            font-size: 13px;
+        }
+
+        .shop-btn:hover {
+            background: #0f652b;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #14231a;
+
+            color: #b8c5bc;
+
+            text-align: center;
+
+            padding: 22px;
+
+            margin-top: 60px;
+
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .dashboard-header {
+                padding: 15px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .dashboard-nav {
+                justify-content: center;
+
+                flex-wrap: wrap;
+            }
+
+            .quick-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-box {
+                padding: 30px 25px;
+            }
+
+            .welcome-box::after {
+                display: none;
+            }
+
+            .orders-section {
+                padding: 20px;
+            }
+
+            .orders-heading {
+                align-items: flex-start;
+
+                gap: 10px;
+
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .dashboard-logo {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .dashboard-logo h1 {
+                font-size: 21px;
+            }
+
+            .dashboard-container {
+                margin-top: 25px;
+
+                padding: 0 14px;
+            }
+
+            .welcome-box h2 {
+                font-size: 25px;
+            }
+
+            .orders-heading h2 {
+                font-size: 21px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="dashboard-header">
+
+
+    <div class="dashboard-logo">
+
+        <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="MILKY FARM Logo"
+        >
+
+        <div>
+
+            <h1>
+                MILKY FARM
+            </h1>
+
+            <p>
+                FARM TO CUSTOMER
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <nav class="dashboard-nav">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/">
+            Products
+        </a>
+
+        <a href="/logout"
+           class="logout-btn">
+
+            Logout 🚪
+
+        </a>
+
+    </nav>
+
+
+</header>
+
+
+<!-- =========================
+     MAIN DASHBOARD
+========================= -->
+
+<main class="dashboard-container">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome-box">
+
+        <h2>
+            Welcome, {{ name }}! 👋
+        </h2>
+
+        <p>
+            Your Email:
+            <b>{{ email }}</b>
+        </p>
+
+        <p>
+            Manage your MILKY FARM orders from your dashboard.
+        </p>
+
+    </section>
+
+
+    <!-- QUICK INFORMATION -->
+
+    <section class="quick-cards">
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                📦
+            </div>
+
+            <h3>
+                My Orders
+            </h3>
+
+            <p>
+                View your recent dairy product orders.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                🥛
+            </div>
+
+            <h3>
+                Fresh Products
+            </h3>
+
+            <p>
+                Explore fresh MILKY FARM dairy products.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                🚚
+            </div>
+
+            <h3>
+                Order Tracking
+            </h3>
+
+            <p>
+                Check your order status and delivery details.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ORDERS -->
+
+    <section class="orders-section">
+
+
+        <div class="orders-heading">
+
+            <h2>
+                My Orders 📦
+            </h2>
+
+            <span>
+                Order History
+            </span>
+
+        </div>
+
+
+        {% if orders %}
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Order ID
+                        </th>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Price
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Total
+                        </th>
+
+                        <th>
+                            Address
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for order in orders %}
+
+
+                    <tr>
+
+
+                        <td>
+                            #{{ order[0] }}
+                        </td>
+
+
+                        <td>
+                            {{ order[1] }}
+                        </td>
+
+
+                        <td>
+                            ₹{{ order[2] }}
+                        </td>
+
+
+                        <td>
+                            {{ order[3] }}
+                        </td>
+
+
+                        <td>
+                            <strong>
+                                ₹{{ order[2] * order[3] }}
+                            </strong>
+                        </td>
+
+
+                        <td>
+                            {{ order[4] }}
+                        </td>
+
+
+                        <td>
+
+
+                            {% if order[5] == "Pending" %}
+
+                                <span class="pending">
+                                    Pending 🟡
+                                </span>
+
+
+                            {% elif order[5] == "Confirmed" %}
+
+                                <span class="confirmed">
+                                    Confirmed 🔵
+                                </span>
+
+
+                            {% elif order[5] == "Delivered" %}
+
+                                <span class="delivered">
+                                    Delivered 🟢
+                                </span>
+
+
+                            {% else %}
+
+                                {{ order[5] }}
+
+                            {% endif %}
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+
+        <div class="empty-message">
+
+            <div class="empty-icon">
+                🛒
+            </div>
+
+            <p>
+                You have not placed any orders yet.
+            </p>
+
+            <a
+                href="/"
+                class="shop-btn"
+            >
+                Start Shopping
+            </a>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026 MILKY FARM | FARM TO CUSTOMER
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

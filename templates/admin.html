@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MILKY FARM - Admin Dashboard</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: #f4f8f3;
+            color: #333;
+        }
+
+
+        /* ==============================
+           HEADER
+        ============================== */
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .header img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 5px;
+        }
+
+
+        .header h1 {
+            margin: 0;
+            color: #188038;
+            font-size: 34px;
+        }
+
+
+        .header p {
+            margin-top: 8px;
+            color: #666;
+            font-size: 16px;
+        }
+
+
+        .logout-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 22px;
+            background: #d93025;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+
+        .logout-btn:hover {
+            background: #b71c1c;
+        }
+
+
+
+        /* ==============================
+           STATISTICS
+        ============================== */
+
+        .stats {
+            display: grid;
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            max-width: 1200px;
+
+            margin: auto auto 35px;
+        }
+
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,0.08);
+        }
+
+
+        .stat-card h2 {
+            margin: 0;
+            color: #188038;
+            font-size: 30px;
+        }
+
+
+        .stat-card p {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #666;
+        }
+
+
+
+        /* ==============================
+           SECTION
+        ============================== */
+
+        .section {
+            max-width: 1160px;
+            margin: 0 auto 35px;
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,0.08);
+
+            overflow-x: auto;
+        }
+
+
+        .section h2 {
+            color: #188038;
+            margin-top: 0;
+        }
+
+
+
+        /* ==============================
+           SEARCH
+        ============================== */
+
+        .search-area {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+
+        .search-area input {
+            flex: 1;
+
+            padding: 13px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 15px;
+        }
+
+
+        .search-area select {
+            padding: 13px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            background: white;
+
+            font-size: 15px;
+        }
+
+
+
+        /* ==============================
+           TABLE
+        ============================== */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 1000px;
+        }
+
+
+        th {
+            background: #188038;
+
+            color: white;
+
+            padding: 14px 10px;
+
+            text-align: left;
+        }
+
+
+        td {
+            padding: 13px 10px;
+
+            border-bottom: 1px solid #ddd;
+
+            white-space: nowrap;
+        }
+
+
+        tr:hover {
+            background: #f7fbf7;
+        }
+
+
+
+        /* ==============================
+           STATUS FORM
+        ============================== */
+
+        .status-form {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        .status-form select {
+            padding: 8px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            background: white;
+        }
+
+
+        .update-btn {
+            padding: 8px 12px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #188038;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        .update-btn:hover {
+            background: #0d652c;
+        }
+
+
+
+        /* ==============================
+           DELETE BUTTON
+        ============================== */
+
+        .delete-btn {
+            padding: 9px 14px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background: #d93025;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+
+        .delete-btn:hover {
+            background: #b71c1c;
+        }
+
+
+
+        /* ==============================
+           CUSTOMER TABLE
+        ============================== */
+
+        .customer-table {
+            min-width: 700px;
+        }
+
+
+
+        /* ==============================
+           CONTACT TABLE
+        ============================== */
+
+        .contact-table {
+            min-width: 850px;
+        }
+
+
+
+        /* ==============================
+           EMPTY MESSAGE
+        ============================== */
+
+        .empty {
+            text-align: center;
+
+            padding: 25px;
+
+            color: #777;
+        }
+
+
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+
+            .search-area {
+                flex-direction: column;
+            }
+
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div class="header">
+
+        <img
+            src="{{ url_for('static', filename='images/logo.png') }}"
+            alt="Milky Farm Logo"
+        >
+
+        <h1>
+            Admin Dashboard 👨‍💼
+        </h1>
+
+        <p>
+            Manage customers, orders and contact messages
+        </p>
+
+        <a
+            href="/admin-logout"
+            class="logout-btn"
+        >
+            Logout
+        </a>
+
+    </div>
+
+
+
+    <!-- =====================================
+         STATISTICS
+    ====================================== -->
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <h2>
+                {{ total_users }}
+            </h2>
+
+            <p>
+                Total Users 👥
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <h2>
+                {{ total_orders }}
+            </h2>
+
+            <p>
+                Total Orders 📦
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <h2>
+                {{ total_contacts }}
+            </h2>
+
+            <p>
+                Contact Messages 💬
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <h2>
+                ₹{{ total_sales }}
+            </h2>
+
+            <p>
+                Total Sales 💰
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         CUSTOMER ORDERS
+    ====================================== -->
+
+    <div class="section">
+
+        <h2>
+            Customer Orders 📦
+        </h2>
+
+
+        <!-- SEARCH + FILTER -->
+
+        <div class="search-area">
+
+            <input
+                type="text"
+                id="orderSearch"
+                placeholder="🔎 Search customer, product or Order ID..."
+                onkeyup="searchOrders()"
+            >
+
+
+            <select
+                id="statusFilter"
+                onchange="searchOrders()"
+            >
+
+                <option value="All">
+                    All Status
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="Confirmed">
+                    Confirmed
+                </option>
+
+                <option value="Delivered">
+                    Delivered
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- ORDERS TABLE -->
+
+        <table id="ordersTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Sr. No.
+                    </th>
+
+                    <th>
+                        Order ID
+                    </th>
+
+                    <th>
+                        Customer
+                    </th>
+
+                    <th>
+                        Mobile
+                    </th>
+
+                    <th>
+                        Product
+                    </th>
+
+                    <th>
+                        Price
+                    </th>
+
+                    <th>
+                        Quantity
+                    </th>
+
+                    <th>
+                        Total
+                    </th>
+
+                    <th>
+                        Address
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for order in orders %}
+
+                <tr>
+
+
+                    <!-- SR NO -->
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+
+                    <!-- ORDER ID -->
+
+                    <td>
+                        #{{ order[0] }}
+                    </td>
+
+
+                    <!-- CUSTOMER -->
+
+                    <td>
+                        {{ order[1] }}
+                    </td>
+
+
+                    <!-- MOBILE -->
+
+                    <td>
+                        {{ order[2] }}
+                    </td>
+
+
+                    <!-- PRODUCT -->
+
+                    <td>
+                        {{ order[3] }}
+                    </td>
+
+
+                    <!-- PRICE -->
+
+                    <td>
+                        ₹{{ order[4] }}
+                    </td>
+
+
+                    <!-- QUANTITY -->
+
+                    <td>
+                        {{ order[5] }}
+                    </td>
+
+
+                    <!-- TOTAL -->
+
+                    <td>
+                        ₹{{ order[6] }}
+                    </td>
+
+
+                    <!-- ADDRESS -->
+
+                    <td>
+                        {{ order[7] }}
+                    </td>
+
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        <form
+                            action="/update-order-status"
+                            method="POST"
+                            class="status-form"
+                        >
+
+                            <input
+                                type="hidden"
+                                name="order_id"
+                                value="{{ order[0] }}"
+                            >
+
+
+                            <select
+                                name="status"
+                            >
+
+                                <option
+                                    value="Pending"
+                                    {% if order[8] == "Pending" %}
+                                    selected
+                                    {% endif %}
+                                >
+                                    Pending
+                                </option>
+
+
+                                <option
+                                    value="Confirmed"
+                                    {% if order[8] == "Confirmed" %}
+                                    selected
+                                    {% endif %}
+                                >
+                                    Confirmed
+                                </option>
+
+
+                                <option
+                                    value="Delivered"
+                                    {% if order[8] == "Delivered" %}
+                                    selected
+                                    {% endif %}
+                                >
+                                    Delivered
+                                </option>
+
+                            </select>
+
+
+                            <button
+                                type="submit"
+                                class="update-btn"
+                            >
+                                Update
+                            </button>
+
+                        </form>
+
+                    </td>
+
+
+                    <!-- DELETE -->
+
+                    <td>
+
+                        <form
+                            action="/delete-order/{{ order[0] }}"
+                            method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this order?');"
+                        >
+
+                            <button
+                                type="submit"
+                                class="delete-btn"
+                            >
+                                🗑 Delete
+                            </button>
+
+                        </form>
+
+                    </td>
+
+
+                </tr>
+
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="11"
+                        class="empty"
+                    >
+                        No orders found.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- =====================================
+         REGISTERED CUSTOMERS
+    ====================================== -->
+
+    <div class="section">
+
+        <h2>
+            Registered Customers 👥
+        </h2>
+
+
+        <table class="customer-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Customer ID
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Total Orders
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for customer in customers %}
+
+                <tr>
+
+
+                    <!-- SERIAL NUMBER -->
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+
+                    <!-- CUSTOMER NAME -->
+
+                    <td>
+                        {{ customer[1] }}
+                    </td>
+
+
+                    <!-- CUSTOMER EMAIL -->
+
+                    <td>
+                        {{ customer[2] }}
+                    </td>
+
+
+                    <!-- TOTAL ORDERS -->
+
+                    <td>
+                        {{ customer[3] }}
+                    </td>
+
+
+                    <!-- DELETE -->
+
+                    <td>
+
+                        <form
+                            action="/delete-user/{{ customer[0] }}"
+                            method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this customer?');"
+                        >
+
+                            <button
+                                type="submit"
+                                class="delete-btn"
+                            >
+                                🗑 Delete
+                            </button>
+
+                        </form>
+
+                    </td>
+
+
+                </tr>
+
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="5"
+                        class="empty"
+                    >
+                        No registered customers found.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- =====================================
+         CONTACT MESSAGES
+    ====================================== -->
+
+    <div class="section">
+
+        <h2>
+            Contact Messages 💬
+        </h2>
+
+
+        <table class="contact-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        ID
+                    </th>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Email
+                    </th>
+
+                    <th>
+                        Mobile
+                    </th>
+
+                    <th>
+                        Message
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for contact in contacts %}
+
+                <tr>
+
+
+                    <td>
+                        {{ contact[0] }}
+                    </td>
+
+
+                    <td>
+                        {{ contact[1] }}
+                    </td>
+
+
+                    <td>
+                        {{ contact[2] }}
+                    </td>
+
+
+                    <td>
+                        {{ contact[3] }}
+                    </td>
+
+
+                    <td>
+                        {{ contact[4] }}
+                    </td>
+
+
+                    <td>
+
+                        <form
+                            action="/delete-contact/{{ contact[0] }}"
+                            method="POST"
+                            onsubmit="return confirm('Are you sure you want to delete this message?');"
+                        >
+
+                            <button
+                                type="submit"
+                                class="delete-btn"
+                            >
+                                🗑 Delete
+                            </button>
+
+                        </form>
+
+                    </td>
+
+
+                </tr>
+
+
+                {% else %}
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        class="empty"
+                    >
+                        No contact messages found.
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+        function searchOrders() {
+
+            let input =
+                document
+                .getElementById("orderSearch")
+                .value
+                .toLowerCase();
+
+
+            let filter =
+                document
+                .getElementById("statusFilter")
+                .value;
+
+
+            let table =
+                document
+                .getElementById("ordersTable");
+
+
+            let rows =
+                table
+                .getElementsByTagName("tbody")[0]
+                .getElementsByTagName("tr");
+
+
+            for (
+                let i = 0;
+                i < rows.length;
+                i++
+            ) {
+
+                let rowText =
+                    rows[i]
+                    .innerText
+                    .toLowerCase();
+
+
+                let statusCell =
+                    rows[i]
+                    .getElementsByTagName("td")[9];
+
+
+                let statusText = "";
+
+
+                if (statusCell) {
+
+                    statusText =
+                        statusCell
+                        .innerText
+                        .toLowerCase();
+
+                }
+
+
+                let searchMatch =
+                    rowText.includes(input);
+
+
+                let statusMatch =
+                    filter === "All" ||
+                    statusText.includes(
+                        filter.toLowerCase()
+                    );
+
+
+                if (
+                    searchMatch &&
+                    statusMatch
+                ) {
+
+                    rows[i].style.display = "";
+
+                }
+
+                else {
+
+                    rows[i].style.display = "none";
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

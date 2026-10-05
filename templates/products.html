@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products | MILKY FARM</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5faf6;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        .products-header {
+            width: 100%;
+            background: white;
+            padding: 14px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .products-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .products-logo img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .products-logo-text h2 {
+            color: #155d35;
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .products-logo-text span {
+            color: #777;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .products-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .products-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .products-nav a:hover {
+            color: #188038;
+        }
+
+        .products-nav .login-btn {
+            background: #188038;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        .products-nav .login-btn:hover {
+            background: #0d652c;
+            color: white;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .products-hero {
+            background: linear-gradient(
+                135deg,
+                #0b6b3a,
+                #188038
+            );
+
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .products-hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .products-hero p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+
+
+        /* ================= PRODUCTS ================= */
+
+        .products-section {
+            max-width: 1250px;
+            margin: auto;
+            padding: 55px 25px 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #155d35;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+            font-size: 16px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(245px, 1fr)
+            );
+            gap: 28px;
+        }
+
+
+        /* ================= PRODUCT CARD ================= */
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            padding: 28px 22px;
+            text-align: center;
+            border: 1px solid #e4eee6;
+            box-shadow: 0 7px 22px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .product-icon {
+            width: 85px;
+            height: 85px;
+            margin: auto;
+            border-radius: 50%;
+            background: #edf8ef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 43px;
+        }
+
+        .product-card h3 {
+            color: #155d35;
+            font-size: 21px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: #777;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 45px;
+        }
+
+        .product-price {
+            color: #188038;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 18px 0;
+        }
+
+        .store-price {
+            color: #777;
+            font-size: 15px;
+        }
+
+        .order-btn {
+            display: inline-block;
+            background: #188038;
+            color: white;
+            text-decoration: none;
+            padding: 11px 23px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #0d652c;
+            transform: scale(1.03);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .products-footer {
+            background: #123b27;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .products-footer h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .products-footer .tagline {
+            color: #bde5c8;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .products-footer p {
+            color: #d7e5db;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .products-header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .products-nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .products-nav a {
+                font-size: 13px;
+            }
+
+            .products-hero {
+                padding: 55px 15px;
+            }
+
+            .products-hero h1 {
+                font-size: 32px;
+            }
+
+            .products-hero p {
+                font-size: 15px;
+            }
+
+            .products-section {
+                padding: 40px 15px 55px;
+            }
+
+            .section-title h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="products-header">
+
+    <div class="products-logo">
+
+        <img src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="MILKY FARM Logo">
+
+        <div class="products-logo-text">
+            <h2>MILKY FARM</h2>
+            <span>FARM TO CUSTOMER</span>
+        </div>
+
+    </div>
+
+
+    <nav class="products-nav">
+
+        <a href="/">Home</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/contact">Contact</a>
+
+        {% if session.get('user_id') %}
+
+            <a href="/dashboard">Dashboard</a>
+
+            <a href="/logout">Logout</a>
+
+        {% else %}
+
+            <a href="/login" class="login-btn">Login</a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="products-hero">
+
+    <h1>Our Fresh Products 🥛</h1>
+
+    <p>
+        Pure, Fresh & Quality Products Direct From Farm
+    </p>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products-section">
+
+    <div class="section-title">
+
+        <h2>Fresh & Quality Products</h2>
+
+        <p>
+            Choose from our range of fresh dairy and farm products
+        </p>
+
+    </div>
+
+
+    <div class="products-grid">
+
+
+        <!-- Buffalo Milk -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥛</div>
+
+            <h3>Buffalo Milk</h3>
+
+            <p>
+                Fresh and nutritious buffalo milk.
+            </p>
+
+            <div class="product-price">
+                ₹78 / Ltr
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Buffalo Milk&price=78">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Cow Milk -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥛</div>
+
+            <h3>Cow Milk</h3>
+
+            <p>
+                Fresh farm cow milk delivered to you.
+            </p>
+
+            <div class="product-price">
+                ₹60 / Ltr
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Cow Milk&price=60">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Cow Ghee -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🧈</div>
+
+            <h3>Cow Ghee</h3>
+
+            <p>
+                Pure and traditional cow ghee.
+            </p>
+
+            <div class="product-price">
+                ₹750 / Kg
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Cow Ghee&price=750">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Buffalo Ghee -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🧈</div>
+
+            <h3>Buffalo Ghee</h3>
+
+            <p>
+                Rich and pure buffalo ghee.
+            </p>
+
+            <div class="product-price">
+                ₹800 / Kg
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Buffalo Ghee&price=800">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Mava -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥣</div>
+
+            <h3>Mava</h3>
+
+            <p>
+                Fresh and creamy dairy mava.
+            </p>
+
+            <div class="product-price">
+                ₹360 / Kg
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Mava&price=360">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Curd -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥣</div>
+
+            <h3>Curd</h3>
+
+            <p>
+                Fresh and creamy homemade-style curd.
+            </p>
+
+            <div class="product-price">
+                ₹120 / Kg
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Curd&price=120">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Paneer -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🧀</div>
+
+            <h3>Paneer</h3>
+
+            <p>
+                Soft and fresh dairy paneer.
+            </p>
+
+            <div class="product-price">
+                ₹360 / Kg
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Paneer&price=360">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Lassi -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥤</div>
+
+            <h3>Lassi</h3>
+
+            <p>
+                Refreshing and delicious dairy lassi.
+            </p>
+
+            <div class="product-price">
+                ₹30 / Glass
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Lassi&price=30">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Taak -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥛</div>
+
+            <h3>Taak</h3>
+
+            <p>
+                Fresh traditional buttermilk.
+            </p>
+
+            <div class="product-price">
+                ₹50 / Ltr
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Taak&price=50">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Green Peas -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🫛</div>
+
+            <h3>Green Peas</h3>
+
+            <p>
+                Fresh and quality green peas.
+            </p>
+
+            <div class="product-price">
+                ₹110 / Kg
+            </div>
+
+            <a class="order-btn"
+               href="/order?product=Green Peas&price=110">
+                Order Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Ice Cream -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🍨</div>
+
+            <h3>Ice Cream</h3>
+
+            <p>
+                Arun & Mother Dairy varieties available.
+            </p>
+
+            <div class="product-price store-price">
+                Price available in store
+            </div>
+
+            <a class="order-btn"
+               href="/contact">
+                Enquire Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Butter -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🧈</div>
+
+            <h3>Butter</h3>
+
+            <p>
+                Fresh and creamy dairy butter.
+            </p>
+
+            <div class="product-price store-price">
+                Price available in store
+            </div>
+
+            <a class="order-btn"
+               href="/contact">
+                Enquire Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Cheese -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🧀</div>
+
+            <h3>Cheese</h3>
+
+            <p>
+                Quality cheese products available.
+            </p>
+
+            <div class="product-price store-price">
+                Price available in store
+            </div>
+
+            <a class="order-btn"
+               href="/contact">
+                Enquire Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Shrikhand -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥣</div>
+
+            <h3>Shrikhand</h3>
+
+            <p>
+                Traditional sweet and creamy dessert.
+            </p>
+
+            <div class="product-price store-price">
+                Price available in store
+            </div>
+
+            <a class="order-btn"
+               href="/contact">
+                Enquire Now
+            </a>
+
+        </div>
+
+
+
+        <!-- Amrakhand -->
+
+        <div class="product-card">
+
+            <div class="product-icon">🥭</div>
+
+            <h3>Amrakhand</h3>
+
+            <p>
+                Delicious mango-flavoured dairy dessert.
+            </p>
+
+            <div class="product-price store-price">
+                Price available in store
+            </div>
+
+            <a class="order-btn"
+               href="/contact">
+                Enquire Now
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="products-footer">
+
+    <h3>MILKY FARM</h3>
+
+    <p class="tagline">
+        FARM TO CUSTOMER
+    </p>
+
+    <p>
+        Fresh Products • Quality Service • Customer Satisfaction
+    </p>
+
+    <p>
+        © 2026 MILKY FARM. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+</html>

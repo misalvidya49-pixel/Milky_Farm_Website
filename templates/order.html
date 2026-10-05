@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Place Order | MILKY FARM</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3faf5;
+            color: #222;
+        }
+
+        /* ================= HEADER ================= */
+
+        .order-header {
+            background: white;
+            padding: 14px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .order-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .order-brand img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .order-brand h2 {
+            color: #155d35;
+            font-size: 21px;
+            margin-bottom: 3px;
+        }
+
+        .order-brand span {
+            color: #777;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .order-nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .order-nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .order-nav a:hover {
+            color: #188038;
+        }
+
+        /* ================= PAGE ================= */
+
+        .order-page {
+            min-height: calc(100vh - 90px);
+            padding: 50px 20px;
+        }
+
+        .order-container {
+            max-width: 950px;
+            margin: auto;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.09);
+            display: grid;
+            grid-template-columns: 38% 62%;
+        }
+
+        /* ================= PRODUCT SIDE ================= */
+
+        .product-info {
+            background: linear-gradient(
+                145deg,
+                #0b6b3a,
+                #188038
+            );
+
+            color: white;
+            padding: 45px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-icon {
+            width: 105px;
+            height: 105px;
+            margin: 0 auto 25px;
+            background: rgba(255,255,255,0.18);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 55px;
+        }
+
+        .product-info h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .product-info .subtitle {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .product-price {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .price-note {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        /* ================= FORM SIDE ================= */
+
+        .order-form-section {
+            padding: 45px 45px;
+        }
+
+        .order-form-section h2 {
+            color: #155d35;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .order-description {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d6e4da;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #188038;
+            box-shadow: 0 0 0 3px rgba(24,128,56,0.10);
+        }
+
+        .total-box {
+            background: #edf8ef;
+            border-radius: 12px;
+            padding: 15px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0 22px;
+        }
+
+        .total-box span:first-child {
+            color: #555;
+            font-weight: bold;
+        }
+
+        #totalAmount {
+            color: #188038;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            border: none;
+            background: #188038;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .place-order-btn:hover {
+            background: #0d652c;
+        }
+
+        .back-links {
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .back-links a {
+            text-decoration: none;
+            color: #188038;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 768px) {
+
+            .order-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .order-nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .order-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-info {
+                padding: 35px 20px;
+            }
+
+            .order-form-section {
+                padding: 35px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="order-header">
+
+    <div class="order-brand">
+
+        <img src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="MILKY FARM Logo">
+
+        <div>
+            <h2>MILKY FARM</h2>
+            <span>FARM TO CUSTOMER</span>
+        </div>
+
+    </div>
+
+    <nav class="order-nav">
+
+        <a href="/">Home</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/logout">Logout</a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= ORDER PAGE ================= -->
+
+<main class="order-page">
+
+    <div class="order-container">
+
+
+        <!-- PRODUCT INFORMATION -->
+
+        <section class="product-info">
+
+            <div class="product-icon">
+                🥛
+            </div>
+
+            <h1>{{ product }}</h1>
+
+            <p class="subtitle">
+                Fresh quality product from
+                MILKY FARM, delivered with care.
+            </p>
+
+            <div class="product-price">
+                ₹{{ price }}
+            </div>
+
+            <div class="price-note">
+                Price per unit
+            </div>
+
+        </section>
+
+
+        <!-- ORDER FORM -->
+
+        <section class="order-form-section">
+
+            <h2>Place Your Order 🛒</h2>
+
+            <p class="order-description">
+                Enter your details and delivery information below.
+            </p>
+
+
+            <form method="POST"
+                  action="/place-order">
+
+
+                <!-- Hidden Product -->
+
+                <input type="hidden"
+                       name="product"
+                       value="{{ product }}">
+
+
+                <!-- Hidden Price -->
+
+                <input type="hidden"
+                       name="price"
+                       value="{{ price }}">
+
+
+                <!-- NAME + MOBILE -->
+
+                <div class="form-row">
+
+                    <div class="input-group">
+
+                        <label for="customer_name">
+                            Customer Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customer_name"
+                            name="customer_name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="mobile">
+                            Mobile Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            placeholder="Enter mobile number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="input-group">
+
+                    <label for="quantity">
+                        Quantity
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        min="1"
+                        value="1"
+                        required
+                        oninput="calculateTotal()"
+                    >
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="input-group">
+
+                    <label for="address">
+                        Delivery Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        placeholder="Enter complete delivery address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TOTAL -->
+
+                <div class="total-box">
+
+                    <span>
+                        Total Amount
+                    </span>
+
+                    <span id="totalAmount">
+                        ₹{{ price }}
+                    </span>
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="place-order-btn">
+                    Place Order 🛒
+                </button>
+
+            </form>
+
+
+            <!-- BACK -->
+
+            <div class="back-links">
+
+                <a href="/products">
+                    ← Back to Products
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function calculateTotal() {
+
+        const price = parseFloat("{{ price }}") || 0;
+
+        const quantity =
+            parseInt(document.getElementById("quantity").value) || 1;
+
+        const total = price * quantity;
+
+        document.getElementById("totalAmount").innerText =
+            "₹" + total.toFixed(2);
+    }
+
+    calculateTotal();
+
+</script>
+
+</body>
+</html>
