@@ -1,88 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Contact - Milky Farm</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
+    <!-- ================= HEADER ================= -->
 
-        <div class="logo-section">
+    <header class="main-header">
 
-            <img src="{{ url_for('static', filename='images/logo.png') }}"
-                 alt="Milky Farm Logo">
+        <div class="header-container">
 
-            <div>
-                <h1>MILKY FARM</h1>
-                <p>FARM TO CUSTOMER</p>
-            </div>
+            <a href="/" class="brand">
+
+                <img src="{{ url_for('static', filename='images/logo.png') }}"
+                     alt="Milky Farm Logo">
+
+                <div class="brand-text">
+
+                    <h1>MILKY FARM</h1>
+
+                    <span>FARM TO CUSTOMER</span>
+
+                </div>
+
+            </a>
+
+
+            <nav class="main-nav">
+
+                <a href="/">Home</a>
+
+                <a href="/#products">Products</a>
+
+                <a href="/#about">About</a>
+
+                <a href="/contact" class="active">Contact</a>
+
+                <a href="/login" class="nav-login">Login</a>
+
+            </nav>
 
         </div>
-
-        <nav>
-            <a href="/">Home</a>
-            <a href="/#products">Products</a>
-            <a href="/#about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/login">Login</a>
-        </nav>
 
     </header>
 
 
-    <!-- Contact Section -->
+    <!-- ================= CONTACT ================= -->
+
     <section class="contact-section">
 
-        <h2>Contact Us</h2>
+        <div class="section-heading">
+
+            <span>GET IN TOUCH</span>
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Have any questions or suggestions?
+                Send us a message.
+            </p>
+
+        </div>
+
+
+        <!-- Business Contact Number -->
 
         <p>
-            Have any questions or suggestions?
-            Send us a message.
+
+            📞 <b>Contact Number:</b>
+
+            <a href="tel:8554887272">
+                8554887272
+            </a>
+
         </p>
 
+
+        <!-- Contact Form -->
 
         <div class="contact-box">
 
             <form method="POST" action="/contact">
 
-                <label>Name</label>
 
-                <input type="text"
-                       name="name"
-                       placeholder="Enter your name"
-                       required>
+                <label for="name">
+                    Name
+                </label>
 
-
-                <label>Email</label>
-
-                <input type="email"
-                       name="email"
-                       placeholder="Enter your email"
-                       required>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
 
 
-                <label>Mobile Number</label>
+                <label for="email">
+                    Email
+                </label>
 
-                <input type="tel"
-                       name="mobile"
-                       placeholder="Enter your mobile number"
-                       required>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
 
 
-                <label>Message</label>
+                <label for="mobile">
+                    Mobile Number
+                </label>
 
-                <textarea name="message"
-                          rows="5"
-                          placeholder="Write your message..."
-                          required></textarea>
+                <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Enter your mobile number"
+                    required
+                >
+
+
+                <label for="message">
+                    Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
 
 
                 <button type="submit">
@@ -96,14 +158,19 @@
     </section>
 
 
-    <!-- Footer -->
-    <footer>
+    <!-- ================= FOOTER ================= -->
 
-        <p>
+    <footer class="main-footer">
+
+        <div class="footer-bottom">
+
             © 2026 MILKY FARM | FARM TO CUSTOMER
-        </p>
+
+        </div>
 
     </footer>
 
+
 </body>
+
 </html>

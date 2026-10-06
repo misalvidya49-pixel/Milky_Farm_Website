@@ -1376,3 +1376,144 @@ img {
     position: relative;
     z-index: 1;
 }
+/* =====================================================
+   CONTACT PAGE
+===================================================== */
+
+.contact-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 25px 90px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 40px;
+    color: #17351f;
+    margin-bottom: 10px;
+}
+
+.contact-section > p {
+    color: #66736a;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Business Contact Number */
+
+.contact-section > p:nth-of-type(2) {
+    display: inline-block;
+    margin: 10px auto 35px;
+    padding: 12px 22px;
+    background: #edf8ef;
+    border: 1px solid #cfe5d3;
+    border-radius: 30px;
+    color: #188038;
+    font-weight: 600;
+}
+
+.contact-section > p:nth-of-type(2) a {
+    color: #188038;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.contact-section > p:nth-of-type(2) a:hover {
+    color: #0f652b;
+    text-decoration: underline;
+}
+
+
+/* Contact Form */
+
+.contact-box {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 35px;
+    background: white;
+    border: 1px solid #dfeae1;
+    border-radius: 22px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+    text-align: left;
+}
+
+.contact-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-box label {
+    color: #26352b;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    padding: 13px 15px;
+    margin-bottom: 18px;
+    border: 1px solid #d6e3d8;
+    border-radius: 10px;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background: #fbfdfb;
+    transition: 0.3s;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+    border-color: #188038;
+    box-shadow: 0 0 0 3px rgba(24, 128, 56, 0.10);
+    background: white;
+}
+
+.contact-box textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-box button {
+    width: 100%;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #188038;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-box button:hover {
+    background: #0f652b;
+    transform: translateY(-2px);
+}
+
+
+/* Contact Page Mobile */
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        padding: 55px 18px 65px;
+    }
+
+    .contact-section h2 {
+        font-size: 31px;
+    }
+
+    .contact-box {
+        padding: 25px 20px;
+        border-radius: 18px;
+    }
+
+    .contact-section > p:nth-of-type(2) {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+}
